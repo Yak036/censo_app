@@ -1,0 +1,21 @@
+
+
+# Si la solicitud se refiere a un archivo existente o directorio, no reescribir
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Reescribir todo a index.php
+
+
+
+RewriteEngine on
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+RewriteCond %{REQUEST_URI} !index.php
+
+
+# Si la solicitud se refiere a un archivo existente o directorio, no reescribir
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Si no es index.php, redirigir a index.php
+RewriteRule ^(?!index\.php).* index.php?url=$0 [QSA,L]
